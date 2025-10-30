@@ -1,0 +1,10 @@
+{
+    "namespace": "spm",
+    "outdir": "C:\\Users\\paul2\\AppData\\Roaming\\.minecraft\\saves\\Datapack Test\\datapacks\\spm",
+    "mcmeta": {
+        "pack": {
+            "description": "Special Mobs",
+            "pack_format": 88
+        }
+    }
+}
