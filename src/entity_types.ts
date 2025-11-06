@@ -1,4 +1,4 @@
-import { datapack } from "@paul90317/mcfn.ts";
+import { datapack } from "mcfn.ts";
 
 export const entity_types = {
     friend: datapack.tags.entity_type([

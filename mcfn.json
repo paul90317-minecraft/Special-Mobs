@@ -1,10 +1,23 @@
 {
     "namespace": "spm",
-    "outdir": "C:\\Users\\paul2\\AppData\\Roaming\\.minecraft\\saves\\Datapack Test\\datapacks\\spm",
-    "mcmeta": {
-        "pack": {
-            "description": "Special Mobs",
-            "pack_format": 88
-        }
+    "datapack": {
+        "mcmeta": {
+            "pack": {
+                "description": "Special Mobs",
+                "pack_format": 88
+            }
+        },
+        "outdir": "out/datapack",
+        "icon": "pack.png"
+    },
+    "resourcepack": {
+        "mcmeta": {
+            "pack": {
+                "description": "Special Mobs",
+                "pack_format": 69
+            }
+        },
+        "outdir": "out/resourcepack",
+        "icon": "pack.png"
     }
 }

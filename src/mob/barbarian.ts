@@ -1,4 +1,4 @@
-import { MCFunction, EntityTag, type ENTITY_TYPES, Item, tag, mcfn, item, Text, nbt, sel, execute, data, tp, coord, playsound, summon, damage, particle } from '@paul90317/mcfn.ts'
+import { tag, item, nbt, sel, execute, data, tp, vec3, playsound, particle } from 'mcfn.ts'
 import { score } from '../scores'
 import { MOB_TYPE } from './type'
 import { rush, bomb } from './utils'
@@ -16,9 +16,9 @@ export const barbarian: MOB_TYPE = {
             let rage = score.rage_value.get(self)
             let state = score.state.get(self)
             let onground = sel('@s',{
-                nbt: nbt.compound({
+                nbts: [nbt.compound({
                     OnGround: nbt.byte(1)
-                })
+                })]
             })
             execute.if(onground).if(state.eq(1)).run(()=>{
                 bomb(8, 2, 0, 0, 'mob_attack', 'poof', 0, 400)
@@ -27,7 +27,7 @@ export const barbarian: MOB_TYPE = {
             })
             execute.if(rage.ge(70)).run(()=>{
                 rush(1.5, 0.8)
-                particle('poof', coord('~ ~ ~'), coord('1 0.2 1'), 0, 20)
+                particle('poof', vec3('~ ~ ~'), vec3('1 0.2 1'), 0, 20)
                 playsound('entity.horse.jump', 'ambient', sel('@a'))
                 state.assign(1)
                 rage.subby(70)

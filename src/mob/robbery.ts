@@ -1,4 +1,4 @@
-import { MCFunction, EntityTag, type ENTITY_TYPES, Item, tag, mcfn, item, Text, nbt, sel, execute, data, tp, coord, playsound, summon, damage, particle } from '@paul90317/mcfn.ts'
+import { tag, item, nbt, sel, execute, data, vec3, playsound, summon, particle } from 'mcfn.ts'
 import { score } from '../scores'
 import { MOB_TYPE } from './type'
 import { rush, bomb } from './utils'
@@ -19,7 +19,7 @@ export const robbery: MOB_TYPE = {
             const rage = score.rage_value.get(self)
             execute.if(rage.ge(70)).run(()=>{
                 rush(1.5, 0.8)
-                particle('poof', coord('~ ~ ~'), coord('1 0.2 1'), 0, 20)
+                particle('poof', vec3('~ ~ ~'), vec3('1 0.2 1'), 0, 20)
                 playsound('entity.horse.jump', 'ambient', sel('@a'))
                 rage.subby(70)
             })
@@ -34,13 +34,13 @@ export const robbery: MOB_TYPE = {
             execute.if(player).run(() => {
                 const nbt_dropped = nbt.compound({
                     Item: nbt.compound({
-                        count: 1,
+                        count: nbt.int(1),
                         id: nbt.string('minecraft:sand')
                     })
                 })
-                summon('item', coord('~ ~ ~'), nbt_dropped)
+                summon('item', vec3('~ ~ ~'), nbt_dropped)
                 const dropped = sel('@e', {
-                    nbt: nbt_dropped,
+                    nbts: [nbt_dropped],
                     limit: 1,
                     type: 'item',
                     sort: 'nearest'
@@ -55,13 +55,19 @@ export const robbery: MOB_TYPE = {
     armor: {
         head: item('sandstone_slab'),
         chest: item('leather_chestplate', {
-            'dyed_color': 2526768
+            incl: {
+                dyed_color: nbt.int(2526768)
+            }
         }),
         legs: item('leather_leggings', {
-            'dyed_color': 12437933
+            incl: {
+                dyed_color: nbt.int(12437933)
+            }
         }),
         feet: item('leather_boots', {
-            'dyed_color': 4544518
+            incl: {
+                dyed_color: nbt.int(4544518)
+            }
         })
     },
     weapon:{

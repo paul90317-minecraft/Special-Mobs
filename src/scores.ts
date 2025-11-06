@@ -1,4 +1,4 @@
-import { Objective, objective } from '@paul90317/mcfn.ts'
+import { Objective, objective } from 'mcfn.ts'
 
 export const score = {
     rage_value: objective(),

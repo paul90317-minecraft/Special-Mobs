@@ -1,4 +1,4 @@
-import { MCFunction, EntityTag, type ENTITY_TYPES, Item, tag, mcfn, item, Text, nbt, sel, execute, data, tp, coord, playsound, summon, damage, particle, effect } from '@paul90317/mcfn.ts'
+import { tag, item, nbt, sel, execute, effect } from 'mcfn.ts'
 import { score } from '../scores'
 import { MOB_TYPE } from './type'
 import { rush, bomb } from './utils'
@@ -25,13 +25,19 @@ export const miner: MOB_TYPE = {
     armor: {
         head: item('turtle_helmet'),
         chest: item('leather_chestplate', {
-            'dyed_color': 3290282
+            incl: {
+                dyed_color: nbt.int(3290282)
+            }
         }),
         legs: item('leather_leggings', {
-            'dyed_color': 5926536
+            incl: {
+                dyed_color: nbt.int(5926536)
+            }
         }),
         feet: item('leather_boots', {
-            'dyed_color': 11589170
+            incl: {
+                dyed_color: nbt.int(11589170)
+            }
         })
     },
     weapon:{

@@ -1,4 +1,4 @@
-import {sel, execute, mcfn, minecraft, tag, data, item, nbt, datapack, MCFunction, say, ret } from '@paul90317/mcfn.ts'
+import {sel, execute, mcfn, minecraft, tag, data, item, nbt, datapack, MCFunction, say, ret } from 'mcfn.ts'
 import { score } from './scores'
 import { MOB_TYPE } from './mob/type'
 import { mobs } from './mob'

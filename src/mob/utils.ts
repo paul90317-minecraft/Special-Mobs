@@ -1,5 +1,4 @@
-import { MCFunction, EntityTag, type ENTITY_TYPES, Item, tag, mcfn, item, Text, nbt, sel, execute, data, tp, coord, playsound, summon, damage, particle } from '@paul90317/mcfn.ts'
-import type { DAMAGE_TYPES, LootTable, PARTICLE_TYPES } from '@paul90317/mcfn.ts'
+import { MCFunction, EntityTag, type EntityTypeID, Item, tag, mcfn, item, TextObject, nbt, sel, execute, data, tp, vec3, playsound, summon, damage, particle, DamageTypeId, ParticleTypeID } from 'mcfn.ts'
 import { score } from '../scores'
 import { entity_types } from '../entity_types'
 
@@ -12,7 +11,7 @@ export function rush (portrait: number, vertical: number) {
     store.score(x!).run(()=>pos.at(0).get(), true)
     store.score(y!).run(()=>pos.at(1).get(), true)
     store.score(z!).run(()=>pos.at(2).get(), true)
-    tp(coord(`^ ^${vertical} ^${portrait}`))
+    tp(vec3(`^ ^${vertical} ^${portrait}`))
     store.score(dx!).run(()=>pos.at(0).get(), true)
     store.score(dy!).run(()=>pos.at(1).get(), true)
     store.score(dz!).run(()=>pos.at(2).get(), true)
@@ -30,13 +29,13 @@ export function rush (portrait: number, vertical: number) {
     store.data(motion.at(2), 'double', 1).run(()=>dz!.get(), true)
 }
 
-export function bomb(damage_amount: number, radius: number, y: number, dy: number, damage_type: DAMAGE_TYPES, particle_type: PARTICLE_TYPES, particle_speed: number, particle_amount: number) {
+export function bomb(damage_amount: number, radius: number, y: number, dy: number, damage_type: DamageTypeId, particle_type: ParticleTypeID, particle_speed: number, particle_amount: number) {
     let self = sel('@s')
     
-    execute.positioned(coord(`~${-radius} ~${y} ~${-radius}`)).as(sel('@e', {
+    execute.positioned(vec3(`~${-radius} ~${y} ~${-radius}`)).as(sel('@e', {
         dx: 2 * radius, dy, dz: 2 * radius,
         type: entity_types.friend
     })).run(()=>damage(self, damage_amount, damage_type, self), true)
 
-    particle(particle_type, coord(`~ ~${y + dy / 2} ~`), coord(`${radius} ${dy / 2} ${radius}`), particle_speed, particle_amount)
+    particle(particle_type, vec3(`~ ~${y + dy / 2} ~`), vec3(`${radius} ${dy / 2} ${radius}`), particle_speed, particle_amount)
 }

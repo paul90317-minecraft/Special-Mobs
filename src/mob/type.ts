@@ -1,5 +1,5 @@
-import { MCFunction, EntityTag, type ENTITY_TYPES, Item, tag, mcfn, item, Text, nbt, sel, execute, data, tp, coord, playsound, summon, damage, particle } from '@paul90317/mcfn.ts'
-import type { DAMAGE_TYPES, LootTable, PARTICLE_TYPES } from '@paul90317/mcfn.ts'
+import { MCFunction, EntityTag, type ENTITY_TYPES, Item, tag, mcfn, item, Text, nbt, sel, execute, data, tp, coord, playsound, summon, damage, particle } from 'mcfn.ts'
+import type { DAMAGE_TYPES, LootTable, PARTICLE_TYPES } from 'mcfn.ts'
 
 export type MOB_TYPE = {
     tag: EntityTag
